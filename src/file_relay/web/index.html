@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>文件中转站</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-icon">⇄</span><span>文件中转站</span></a>
+    <div class="header-actions"><button id="logout" class="text-button" hidden>退出</button></div>
+  </header>
+  <main>
+    <p id="loading" class="loading" role="status">正在连接…</p>
+    <noscript>请启用 JavaScript。</noscript>
+    <section id="login-panel" class="login-card" hidden>
+      <h1>登录</h1>
+      <form id="login-form"><label class="sr-only" for="token">访问令牌</label><div class="token-row"><input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="粘贴访问令牌" required><button class="primary" type="submit">登录</button></div><p class="hint">获取令牌：<code>file-relay token</code></p></form>
+    </section>
+    <div id="workspace" hidden>
+      <section class="metrics" aria-label="中转站概况">
+        <div><span>文件</span><strong id="file-count">—</strong></div>
+        <div><span>空间</span><strong id="used-space">—</strong></div>
+        <div><span>保留</span><strong id="retention">—</strong></div>
+      </section>
+      <div class="layout">
+        <section class="card upload-card">
+          <div class="section-heading"><h2>上传</h2></div>
+          <div id="drop-zone" class="drop-zone" tabindex="0" role="button" aria-label="选择或拖入文件"><span class="upload-symbol">↑</span><h3>拖入文件</h3><p>或点击选择</p></div>
+          <input id="files" type="file" multiple hidden><input id="folder" type="file" webkitdirectory multiple hidden>
+          <div class="upload-actions"><button id="pick-files" class="secondary">选择文件</button><button id="pick-folder" class="secondary">选择文件夹</button></div>
+          <div id="transfer" hidden><p id="transfer-label"></p><progress id="progress" max="100" value="0"></progress><button id="cancel-upload" class="text-button">取消传输</button></div>
+          <p id="upload-limit" class="hint"></p>
+        </section>
+        <section class="card files-card">
+          <div class="section-heading"><h2>共享文件</h2><div class="right"><button id="refresh" class="text-button">刷新 ↻</button><button id="cleanup" class="text-button">清理过期</button></div></div>
+          <div id="file-list" aria-live="polite"></div><div id="empty" class="empty-state"><span>↔</span><h3>暂无文件</h3></div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

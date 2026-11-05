@@ -1,0 +1,22 @@
+{
+  "version": "0.3.1",
+  "platform": "linux",
+  "architecture": "x86_64",
+  "build_libc": [
+    "glibc",
+    "2.39"
+  ],
+  "python": "3.12.3",
+  "dependencies": {
+    "starlette": "1.2.1",
+    "uvicorn": "0.48.0",
+    "anyio": "4.13.0",
+    "h11": "0.16.0",
+    "click": "8.1.6",
+    "idna": "3.6",
+    "typing_extensions": "4.15.0",
+    "pyinstaller": "6.22.3"
+  },
+  "bundled_openssl": "OpenSSL 3.0.13 30 Jan 2024 (Library: OpenSSL 3.0.13 30 Jan 2024)",
+  "compatibility": "Requires compatible glibc Linux on the same CPU architecture; test each target. Not an Alpine/musl build."
+}

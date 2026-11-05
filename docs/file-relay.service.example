@@ -1,0 +1,17 @@
+# Example user service only. This project never installs or enables it.
+# Adjust both paths before use. Run as a regular user, not root.
+[Unit]
+Description=Local File Relay (loopback only)
+
+[Service]
+Type=simple
+ExecStart="%h/Applications/file-relay/file-relay" --home "%h/.local/share/file-relay" serve
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=45
+NoNewPrivileges=true
+RestrictAddressFamilies=AF_UNIX AF_INET
+UMask=0077
+
+[Install]
+WantedBy=default.target

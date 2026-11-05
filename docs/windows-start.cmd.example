@@ -1,0 +1,4 @@
+@echo off
+rem Example only; not installed or registered. Adjust distro and Linux paths.
+rem Keep this foreground WSL invocation running while the service is needed.
+wsl.exe -d Ubuntu -- /home/YOUR_USER/Applications/file-relay/file-relay --home /home/YOUR_USER/.local/share/file-relay serve

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "local-file-relay"
+version = "0.3.1"
+description = "Private portable file transfer service for WSL and Linux virtual machines"
+requires-python = ">=3.12"
+dependencies = ["starlette==1.2.1", "uvicorn==0.48.0", "h11==0.16.0"]
+
+[project.scripts]
+file-relay = "file_relay.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+file_relay = ["web/*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
